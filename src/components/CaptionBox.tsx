@@ -7,7 +7,7 @@ import { Plus, Trash2 } from "lucide-react";
 
 const CaptionBox: React.FC = () => {
   const {
-    items,
+    captions,
     handleTextChange,
     handleTimeChange,
     handleAddItem,
@@ -16,29 +16,29 @@ const CaptionBox: React.FC = () => {
 
   return (
     <div className="container mx-auto">
-      {items.map((item) => (
-        <div key={item.id} className="flex items-center space-x-4 mb-4">
+      {captions.map((caption) => (
+        <div key={caption.id} className="flex items-center space-x-4 mb-4">
           <Textarea
-            value={item.text}
-            onChange={(e) => handleTextChange(item.id, e.target.value)}
+            value={caption.text}
+            onChange={(e) => handleTextChange(caption.id, e.target.value)}
             className="flex-grow border rounded px-4 py-2"
             placeholder="Text"
           />
           <div className="flex flex-col gap-1">
             <Input
               type="text"
-              value={item.startTime}
+              value={caption.startTime}
               onChange={(e) => {
-                handleTimeChange(item.id, "startTime", e.target.value);
+                handleTimeChange(caption.id, "startTime", e.target.value);
               }}
               className="border rounded px-2 py-1 w-20"
               placeholder="--:--.---"
             />
             <Input
               type="text"
-              value={item.endTime}
+              value={caption.endTime}
               onChange={(e) =>
-                handleTimeChange(item.id, "endTime", e.target.value)
+                handleTimeChange(caption.id, "endTime", e.target.value)
               }
               className="border rounded px-2 py-1 w-20"
               placeholder="--:--.---"
@@ -49,9 +49,9 @@ const CaptionBox: React.FC = () => {
               <Plus />
             </Button>
             <Button
-              onClick={() => handleDeleteItem(item.id)}
+              onClick={() => handleDeleteItem(caption.id)}
               variant={"destructive"}
-              disabled={item.id == 1 ? true : false}
+              disabled={caption.id == 1 ? true : false}
             >
               <Trash2 />
             </Button>

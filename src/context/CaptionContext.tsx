@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-interface Item {
+interface Caption {
   id: number;
   text: string;
   startTime: string;
@@ -8,7 +8,7 @@ interface Item {
 }
 
 interface CaptionContextType {
-  items: Item[];
+  captions: Caption[];
   handleTextChange: (id: number, text: string) => void;
   handleTimeChange: (id: number, field: string, value: string) => void;
   handleAddItem: () => void;
@@ -33,46 +33,46 @@ interface CaptionProviderProps {
 export const CaptionProvider: React.FC<CaptionProviderProps> = ({
   children,
 }) => {
-  const [items, setItems] = useState<Item[]>([
+  const [captions, setCaptions] = useState<Caption[]>([
     { id: 1, text: "", startTime: "", endTime: "" },
   ]);
 
   const handleTextChange = (id: number, text: string) => {
-    const updatedItems = items.map((item) =>
-      item.id === id ? { ...item, text } : item
+    const updatedItems = captions.map((caption) =>
+      caption.id === id ? { ...caption, text } : caption
     );
-    setItems(updatedItems);
+    setCaptions(updatedItems);
   };
 
   const handleTimeChange = (id: number, field: string, value: string) => {
-    const updatedItems = items.map((item) =>
-      item.id === id ? { ...item, [field]: value } : item
+    const updatedItems = captions.map((caption) =>
+      caption.id === id ? { ...caption, [field]: value } : caption
     );
-    setItems(updatedItems);
+    setCaptions(updatedItems);
   };
 
   const handleAddItem = () => {
-    const newItem: Item = {
-      id: items.length + 1,
+    const newItem: Caption = {
+      id: captions.length + 1,
       text: "",
       startTime: "",
       endTime: "",
     };
-    setItems([...items, newItem]);
+    setCaptions([...captions, newItem]);
   };
   const handleReset = () => {
-    setItems([{ id: 1, text: "", startTime: "", endTime: "" }]);
+    setCaptions([{ id: 1, text: "", startTime: "", endTime: "" }]);
   };
 
   const handleDeleteItem = (id: number) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
+    const updatedItems = captions.filter((caption) => caption.id !== id);
+    setCaptions(updatedItems);
   };
 
   return (
     <CaptionContext.Provider
       value={{
-        items,
+        captions,
         handleReset,
         handleTextChange,
         handleTimeChange,

@@ -3,7 +3,7 @@ import { useCaptionContext } from "@/context/CaptionContext";
 import { useUrlContext } from "@/context/UrlContext";
 
 const VideoPlayer = () => {
-  const { items: captions } = useCaptionContext();
+  const { captions } = useCaptionContext();
   const { url } = useUrlContext();
   const [vttBlobUrl, setVttBlobUrl] = useState<string>("");
 
