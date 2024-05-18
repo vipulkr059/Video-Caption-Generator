@@ -12,6 +12,7 @@ interface CaptionContextType {
   handleTextChange: (id: number, text: string) => void;
   handleTimeChange: (id: number, field: string, value: string) => void;
   handleAddItem: () => void;
+  handleReset: () => void;
   handleDeleteItem: (id: number) => void;
 }
 
@@ -59,6 +60,9 @@ export const CaptionProvider: React.FC<CaptionProviderProps> = ({
     };
     setItems([...items, newItem]);
   };
+  const handleReset = () => {
+    setItems([{ id: 1, text: "", startTime: "", endTime: "" }]);
+  };
 
   const handleDeleteItem = (id: number) => {
     const updatedItems = items.filter((item) => item.id !== id);
@@ -69,6 +73,7 @@ export const CaptionProvider: React.FC<CaptionProviderProps> = ({
     <CaptionContext.Provider
       value={{
         items,
+        handleReset,
         handleTextChange,
         handleTimeChange,
         handleAddItem,

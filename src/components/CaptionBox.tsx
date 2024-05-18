@@ -28,11 +28,11 @@ const CaptionBox: React.FC = () => {
             <Input
               type="text"
               value={item.startTime}
-              onChange={(e) =>
-                handleTimeChange(item.id, "startTime", e.target.value)
-              }
+              onChange={(e) => {
+                handleTimeChange(item.id, "startTime", e.target.value);
+              }}
               className="border rounded px-2 py-1 w-20"
-              placeholder="Start"
+              placeholder="--:--.---"
             />
             <Input
               type="text"
@@ -41,7 +41,7 @@ const CaptionBox: React.FC = () => {
                 handleTimeChange(item.id, "endTime", e.target.value)
               }
               className="border rounded px-2 py-1 w-20"
-              placeholder="End"
+              placeholder="--:--.---"
             />
           </div>
           <div className="flex flex-col gap-1">
