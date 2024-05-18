@@ -1,9 +1,9 @@
+import { toast } from "@/components/ui/use-toast";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface UrlContextType {
   url: string;
-  handleUrlChange: (newUrl: string) => void;
-  handleSubmit: () => void;
+  handleSubmit: (newUrl: string) => void;
 }
 
 const UrlContext = createContext<UrlContextType | undefined>(undefined);
@@ -23,19 +23,37 @@ interface UrlProviderProps {
 export const UrlProvider: React.FC<UrlProviderProps> = ({ children }) => {
   const [url, setUrl] = useState<string>("");
 
-  const handleUrlChange = (newUrl: string) => {
-    setUrl(newUrl);
-  };
+  const handleSubmit = async (url: string) => {
+    try {
+      const response = await fetch(url, {
+        method: "HEAD",
+      });
 
-  const handleSubmit = () => {
-    console.log("URL submitted:", url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const contentType = response.headers.get("Content-Type");
+      console.log(contentType);
+
+      if (contentType && !contentType.startsWith("video")) {
+        throw new Error("The URL does not point to a video");
+      }
+      setUrl(url);
+    } catch (error) {
+      console.error("Error fetching the URL:", error);
+      toast({
+        title: "Invalid URL",
+        description: "URL doesn't contain any video source",
+      });
+      setUrl("");
+    }
   };
 
   return (
     <UrlContext.Provider
       value={{
         url,
-        handleUrlChange,
         handleSubmit,
       }}
     >

@@ -2,6 +2,7 @@ import CaptionBox from "@/components/CaptionBox";
 import ModalComponent from "@/components/ModalComponent";
 import { ToggleTheme } from "@/components/ToggleTheme";
 import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/toaster";
 import UrlInput from "@/components/UrlInput";
 import VideoPlayer from "@/components/VideoPlayer";
 import { useModal } from "@/context/ModalContext";
@@ -21,6 +22,7 @@ export default function HomePage() {
           <CaptionBox />
         </ModalComponent>
       </div>
+      <Toaster />
     </div>
   );
 }

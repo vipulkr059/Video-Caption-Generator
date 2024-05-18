@@ -1,3 +1,4 @@
+import { toast } from "@/components/ui/use-toast";
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 interface ModalContextProps {
@@ -18,8 +19,9 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
   const closeModal = () => setIsModalOpen(false);
 
   const handleSubmit = () => {
-    // Handle the submit action here, such as saving data or updating state
-    console.log("Captions submitted");
+    toast({
+      title: "Captions Submitted successfully",
+    });
     closeModal();
   };
 

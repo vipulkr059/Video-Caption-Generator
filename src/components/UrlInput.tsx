@@ -4,18 +4,18 @@ import { Button } from "./ui/button";
 import { useUrlContext } from "@/context/UrlContext";
 
 const UrlInput: React.FC = () => {
-  const { url, handleUrlChange, handleSubmit } = useUrlContext();
-  const [inputValue, setInputValue] = useState<string>(url);
+  const { handleSubmit } = useUrlContext();
+  const [inputValue, setInputValue] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleUrlChange(inputValue);
-    handleSubmit();
+    handleSubmit(inputValue);
   };
+
   return (
     <form onSubmit={handleFormSubmit} className="w-full max-w-sm mx-auto">
       <div className="flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md">
