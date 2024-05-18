@@ -37,7 +37,7 @@ To run this application locally, follow these steps:
 
 1. **Clone the repository**:
 
-   git clone https://github.com/your-username/react-app.git
+   git clone https://github.com/username/Video-Caption-Generator.git)
 
 2. **Navigate into the project directory**:
    
