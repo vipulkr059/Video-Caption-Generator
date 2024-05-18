@@ -1,3 +1,4 @@
+import CaptionBox from "@/components/CaptionBox";
 import UrlInput from "@/components/UrlInput";
 import VideoPlayer from "@/components/VideoPlayer";
 
@@ -6,6 +7,7 @@ export default function HomePage() {
     <div className="flex flex-col gap-3 m-2">
       <UrlInput />
       <VideoPlayer />
+      <CaptionBox />
     </div>
   );
 }
