@@ -15,7 +15,13 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    toast({
+      title: "Plese enter timeStamp in HH:mm:ss.mmm format",
+      description: "Only above format is supported for captions",
+    });
+    setIsModalOpen(true);
+  };
   const closeModal = () => setIsModalOpen(false);
 
   const handleSubmit = () => {
