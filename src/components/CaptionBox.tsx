@@ -15,7 +15,7 @@ const CaptionBox: React.FC = () => {
   } = useCaptionContext();
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto overflow-y-auto max-h-52">
       {captions.map((caption) => (
         <div key={caption.id} className="flex items-center space-x-4 mb-4">
           <Textarea
@@ -31,8 +31,8 @@ const CaptionBox: React.FC = () => {
               onChange={(e) => {
                 handleTimeChange(caption.id, "startTime", e.target.value);
               }}
-              className="border rounded px-2 py-1 w-20"
-              placeholder="--:--.---"
+              className="border rounded px-2 py-1 w-32"
+              placeholder="HH:MM:SS.mmm"
             />
             <Input
               type="text"
@@ -40,8 +40,8 @@ const CaptionBox: React.FC = () => {
               onChange={(e) =>
                 handleTimeChange(caption.id, "endTime", e.target.value)
               }
-              className="border rounded px-2 py-1 w-20"
-              placeholder="--:--.---"
+              className="border rounded px-2 py-1 w-32"
+              placeholder="HH:MM:SS.mmm"
             />
           </div>
           <div className="flex flex-col gap-1">

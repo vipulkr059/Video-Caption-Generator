@@ -17,7 +17,7 @@ export const ModalProvider: React.FC<{ children: ReactNode }> = ({
 
   const openModal = () => {
     toast({
-      title: "Plese enter timeStamp in HH:mm:ss.mmm format",
+      title: "Plese enter timeStamp in HH:MM:SS.mmm format",
       description: "Only above format is supported for captions",
     });
     setIsModalOpen(true);
